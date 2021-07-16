@@ -1,0 +1,47 @@
+<html>
+
+    <div *ngIf="forgotPass; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock> <body class="body bg-img">
+        
+        <div class="card">
+            <h1 class="card-title h3 mb-3 font-weight-normal text-center">Forgot Password</h1>
+        <br>
+        <div class="card-body" id="card-bodyID" *ngIf="resetmessage">
+            <span [innerHTML]="resetmessage"></span>            
+        </div>
+        <form class="form" [formGroup]="password_form"  (ngSubmit)="sendMail()">
+        <div class=form-group>
+            <input type="text" id="enterEmail" formControlName="email" class="form-control" placeholder="Enter your email">
+            <br>
+            <br>
+            <button class="btn btn-primary btn-login" >Reset password</button>
+        </div>
+        </form>
+        <div><button class="btn" id="forgotPasswordGoBack" (click)="forgotPassword()" >Go back</button></div>
+
+    </div>
+    
+</body>
+
+</ng-template>
+<ng-template #elseBlock>
+    <body class="body bg-img" id="loginbody">
+            <div class="card card-block" id="cardID" [@loginScreenAnimation]="loginScreenAnimation"
+                                        (@loginScreenAnimation.done)="setBackToUnchecked()">
+                                        <h1 class="card-title h3 mb-3 font-weight-normal text-center">Sign in</h1>
+                <br>
+                <div class="card-body" id="card-bodyID" *ngIf="errmessage">
+                    <span [innerHTML]="errmessage"></span>
+                </div>
+                <form class="form" [formGroup]="login_form"  (ngSubmit)="Submit()">
+                    <div class=form-group>
+                        <input type="text" formControlName="username" class="form-control" placeholder="Username">
+                        <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button class="btn btn-primary btn-login" [disabled]="dis">Log in</button>
+                </form>
+                <button class="btn btn-forgot" (click)="forgotPassword()">Forgot password?</button>
+            </div>
+    </body>
+</ng-template>
+</html>

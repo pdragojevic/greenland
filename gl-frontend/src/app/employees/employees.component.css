@@ -1,0 +1,8 @@
+.container{
+    position: absolute;
+    margin-left: 36%;
+    margin-top: 9%;
+    padding: 20px;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+  }

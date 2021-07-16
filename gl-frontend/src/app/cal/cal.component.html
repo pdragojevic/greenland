@@ -1,0 +1,25 @@
+
+<div class='app'>
+  <div class='app-main'>
+    <full-calendar #calendar
+      *ngIf='calendarVisible'
+      [options]='calendarOptions'
+    ></full-calendar>
+  </div>
+
+  <div class='app-sidebar'>
+    <div class='app-sidebar-section'>
+      <button *ngIf='canCreateMeeting==true' class="btn btn-sm btn-outline-primary" (click)="open()"><i class="bi bi-plus"></i>Create a meeting</button>
+      <h2>Meetings ({{currentEvents.length}})</h2>
+      <!-- <a >{{x}}</a> -->
+      <ul>
+        <li *ngFor='let event of currentEvents.slice(0, 5);'>
+          <b>{{event.startStr}}</b>
+          <i>{{event.title}}</i>
+        </li>
+      </ul>
+    </div>
+  
+  <hr>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+stages:
+##  - unit_test_api
+  - build_api
+  - build_angular
+
+variables:
+  project_api: "Greenland.API"
+  project_angular: "gl-frontend"
+  project_unit_test_api: "Greenland.Unit.Test"
+
+build_api:
+  image: mcr.microsoft.com/dotnet/core/sdk:3.1
+  stage: build_api
+  variables:
+    build_path: "$project_api"
+  before_script:
+    - "dotnet restore"
+  script:
+    - "echo Started building .NET CORE WEB API"
+    - "cd $build_path"
+    - "dotnet build"
+
+##unit_test_api:
+ ##   image: mcr.microsoft.com/dotnet/core/sdk:3.1
+   ## stage: unit_test_api
+  ##  variables:
+  ##      build_path: "$project_unit_test_api"
+  ##  before_script:
+   ##   - "dotnet restore"
+   ## script:
+    ##  - "echo Started unit_testing .NET CORE WEB API"
+    ##  - "cd $build_path"
+     ## - "dotnet test"
+   ##   - "echo Unit testing finished!"
+    
+build_angular:
+  image: node:latest
+  stage: build_angular
+  variables:
+    build_path: "$project_angular"
+  script:
+    - "echo Started building angular project"
+    - "cd $build_path"
+    - "npm install -g @angular/cli"
+    - "npm install"
+    - "ng build --prod"

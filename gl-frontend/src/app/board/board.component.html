@@ -1,0 +1,18 @@
+<html>
+   <body class="body" >
+      <div class="card" id="cardID">
+         <h1 class="card-header" id="card-headerID">What do you want to manage?</h1>
+
+<div class="container-fluid">
+    <button class="btn" routerLink="/employees" routerLinkActive="active" >Employees</button> 
+    <button class="btn"  (click)="teams()" >Teams</button>     
+    <button class="btn" (click)="groups()" >Working groups</button>
+</div>
+</div>
+<app-teams *ngIf="teamsShown"></app-teams>
+<app-groups *ngIf="groupsShown"></app-groups>
+
+</body>
+</html>
+
+    

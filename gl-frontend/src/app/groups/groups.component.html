@@ -1,0 +1,24 @@
+
+    <div class="container w-25">
+
+<form class="form" [formGroup]="addGroupForm"  (ngSubmit)="Submit()">
+  <h1 class="h3 mb-3 font-weight-normal text-center">Add a new group</h1>
+  <div class=form-group>
+     <input type="text" formControlName="groupName" class="form-control" placeholder="Group name">
+     <div *ngIf="error">{{error}}</div>
+     <div *ngIf="success">{{success}}</div>
+ </div>
+ 
+  <div class=form-group>
+    Coordinator ID
+     <select formControlName="IdCoordinator" class="form-control">
+      <option disabled selected value></option>
+      <option  *ngFor="let coordinator of coordinators">{{coordinator.firstName}} {{coordinator.lastName}} ID= {{coordinator.idEmployee}}</option>
+    </select>
+ </div>
+ <br>
+
+ <button class="btn btn-primary">Submit</button>
+</form>
+</div>
+

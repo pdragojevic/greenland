@@ -1,0 +1,46 @@
+<html>
+    
+   <body class="body" >
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="row">
+                  <div class="col-md-3 padded">
+                     <ngb-accordion #acc="ngbAccordion">
+                        <ngb-panel id="toggle-1" title="Your activities">
+                          <ng-template ngbPanelContent>
+                           <div class="row" *ngFor="let activity of activities; index as i">
+                              <div class="col-md-10">
+                                 <hr *ngIf='i>0'>
+                                 {{activity}}
+                              </div>
+                           </div>
+
+                          </ng-template>
+                        </ngb-panel>
+                        <ngb-panel id="toggle-2" title="Your crew">
+                          <ng-template ngbPanelContent>
+                           <div class="row" *ngFor="let member of team">
+                              <div class="col-md-2 proba" >
+                                 <img class="profile-photo" src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" width="25" height="20" alt="">
+                              </div>
+                              <div class="col-md-10">
+                                 {{member.firstName}} {{member.lastName}}
+                              </div>
+                           </div>
+                          </ng-template>
+                        </ngb-panel>
+                      </ngb-accordion>
+                      
+                  </div>
+                  <div class="col-md-9 padded">
+                     <app-calendar></app-calendar>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+   
+    </body>
+</html>

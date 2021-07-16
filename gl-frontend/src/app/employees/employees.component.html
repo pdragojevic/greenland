@@ -1,0 +1,145 @@
+<html>
+
+<body class="body" class="card" id="cardID">
+  <h1 class="card-header" id="card-headerID">Employees</h1>
+  <div class="container-fluid">
+    <button class="btn" (click)="showAddEmployee()">Add a new employee</button>
+    <button class="btn" (click)="showTeams()">Promote an existing employee</button>
+    
+  </div>
+
+  
+
+
+
+  <div class="container w-25" *ngIf="showT==true && teamSelected==false">
+    <h1 class="h3 mb-3 font-weight-normal text-center">Select a team</h1>
+    <hr>
+    <ul class="list-group">
+      <li *ngFor="let team of teams; index as i">
+        <a class="list-group-item" (click)="openTeam(i)">{{team.teamName}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="showT==true && teamSelected==true" class="container w-25">
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Select a member to promote</h1>
+    <hr>
+    <div *ngIf="success">{{success}}
+      <br>
+   </div>
+   <br>
+    <ul class="list-group">
+      <h5>Leader: </h5>
+       <li>
+          <div *ngIf="noLeader">No leader</div>
+          <div *ngIf="!noLeader">
+
+        <a class="list-group-item" (click)="promoteLeader(leader.username,leader.firstName,leader.lastName)">{{leader.firstName}} {{leader.lastName}}</a>
+      </div>
+
+      </li> 
+      <br>
+      
+
+
+      <h5>Developers: </h5>
+      <div *ngIf="noDevs">No developers</div>
+          <div *ngIf="!noDevs">
+      <li *ngFor="let developer of developersFromTeam;">
+        <a class="list-group-item" (click)="promoteDev(developer.username,developer.firstName,developer.lastName)">{{developer.firstName}} {{developer.lastName}}</a>
+      </li>
+          </div>
+    </ul>
+    <br>
+    <hr>
+    <button class="btn btn-outline-primary" (click)="teamSelected=false;" >&laquo; Go back</button>
+  </div>
+
+
+
+  <div class="container w-25" *ngIf="addE">
+    <h1 class="h3 mb-3 font-weight-normal text-center">Add a new employee</h1>
+    <hr>
+    <br>
+    <form class="form" [formGroup]="addEmployeeForm" (ngSubmit)="Submit()">
+      <div class=form-group>First name
+        <input type="text" formControlName="firstName" class="form-control" >
+      </div>
+      <br>
+
+      <div class=form-group>Last name
+        <input type="text" formControlName="lastName" class="form-control">
+      </div>
+      <br>
+
+      <div class=form-group>Company position ID
+        <select formControlName="idCompanyPosition" class="form-control">
+          <option disabled selected value></option>
+          <option >ID=1 Administration</option>
+          <option>ID=2 Coordinator</option>
+          <option>ID=3 Team leader</option>
+          <option>ID=4 Developer</option>
+        </select>
+      </div>
+      <br>
+
+      <div class=form-group>Team ID
+        <select *ngIf="!addEmployeeForm.valid" formControlName="idTeam" class="form-control">
+          <option disabled selected value>--NO TEAM-- </option>
+        </select>
+        <select *ngIf="addEmployeeForm.valid" formControlName="idTeam" class="form-control">
+          <option disabled selected value></option>
+          <option *ngFor="let team of teams">{{team.teamName}} ID= {{team.idTeam}}</option>
+        </select>
+      </div>
+      <br>
+
+
+      <div class=form-group> Birth date
+        <input type="date" formControlName="birthDate" class="form-control" placeholder="birthDate">
+      </div>
+      <br>
+
+      <div class=form-group> Hire date
+        <input type="date" formControlName="hireDate" class="form-control" placeholder="hireDate">
+      </div>
+      <br>
+
+      <div class=form-group>Gender
+        <input type="text" formControlName="gender" class="form-control">
+      </div>
+      <br>
+
+      <div class=form-group>Email
+        <input type="email" formControlName="email" class="form-control">
+      </div>
+      <br>
+
+      <div class=form-group id="username-tfID">Username
+        <input type="text" formControlName="username" class="form-control">
+      </div>
+      <br>
+
+      <div class=form-group>Password
+        <input type="password" formControlName="password" class="form-control">
+      </div>
+      <br>
+
+
+      <div *ngIf="success">Employee added!
+     </div>
+     <br>
+
+      <button class="btn btn-primary">Submit</button>
+      <br>
+    </form>
+  </div>
+
+</body>
+
+</html>
+
+
+

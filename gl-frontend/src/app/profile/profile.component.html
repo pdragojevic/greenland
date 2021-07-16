@@ -1,0 +1,80 @@
+<html>
+   <body class="body bg-img" >
+      <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal text-center">My profile</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4">
+                <div>
+                  <img class="rounded-circle profile-photo" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" width=150 height=150 alt="">
+                  </div>
+                  <div class="row justify-content-center"><h3 class="text-center">
+                     {{emp.firstName}} {{emp.lastName}}
+                   </h3></div>
+                   <div class="row justify-content-center">
+                     <h3><small class="text-muted">{{emp.position}}</small></h3>
+                   </div>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <label for="staticEmail" class="col-sm-4 col-form-label">Username:</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{emp.username}}">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Birth date:</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{emp.birthDate}}">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Hire date:</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{emp.hireDate}}">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{emp.gender}}">
+                  </div>
+                </div>
+                <div class="row" *ngIf="isTeamShown">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Team</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{emp.team}}">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="inputPassword" class="col-sm-4 col-form-label">Email:</label>
+                  <div class="col-sm-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{emp.email}}">
+                  </div>
+                </div><br>
+            <div id="row form-control">
+               <div class="row">
+                  <div class="col-sm-6 d-flex ">
+                     <button class="btn btn-outline-primary flex-fill" routerLink="/" >&laquo; Go back</button></div>
+                  <div class="col-sm-6 d-flex">
+                     <button class="btn btn-primary flex-fill" routerLink="/changePassword">Change password</button>
+                  </div>
+                  
+                  </div>
+               
+               <div *ngIf="isTeamShown === false" class="d-flex div-administration-promote child">
+                  <a id="button-promote" class="btn btn-primary flex-fill" routerLink="/board" routerLinkActive="active" >Manage company</a>
+               </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+         
+            
+         
+      </div>
+   </body>
+</html>

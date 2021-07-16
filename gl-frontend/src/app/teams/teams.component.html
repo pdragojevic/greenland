@@ -1,0 +1,30 @@
+    <div class="container w-25">
+
+<form class="form" [formGroup]="addTeamForm"  (ngSubmit)="Submit()">
+  <h1 class="h3 mb-3 font-weight-normal text-center">Add a new team</h1>
+  <div class=form-group>
+     <input type="text" formControlName="teamName" class="form-control" placeholder="Team Name">
+     <div *ngIf="error">{{error}}</div>
+     <div *ngIf="success">{{success}}</div>
+ </div>
+
+ <div class=form-group>
+   Working group ID
+  <select formControlName="IdWorkingGroup" class="form-control">
+    <option disabled selected value></option>
+    <option *ngFor="let group of groups">{{group.workingGroupName}} ID= {{group.idWorkingGroup}}</option>
+  </select>
+</div>
+
+  <div class="form-group">
+    Team leader
+     <select formControlName="IdTeamLeader" class="form-control">
+      <option disabled selected value></option>
+      <option  *ngFor="let leader of leaders">{{leader.firstName}} {{leader.lastName}} ID= {{leader.idEmployee}}</option>
+    </select>
+ </div>
+ <br>
+
+ <button class="btn btn-primary">Submit</button>
+</form>
+</div>

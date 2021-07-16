@@ -1,0 +1,18 @@
+
+  .board {
+      margin-top: 200px;
+  }
+
+
+  .board > a {
+    width: 100%;
+    float: left;
+    background-color: #4CAF50;
+    padding: 20px;
+    color:white;
+    text-align: center;
+  }
+
+  .board > a:hover {
+    background-color: #45a049;
+  }

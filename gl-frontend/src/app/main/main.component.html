@@ -1,0 +1,229 @@
+<div class="root">
+
+
+    <div class="board" *ngIf="isOwner==false">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 pad-top card">
+                            <div class="list-group">
+                                <a (click)="toggleDisplay()" class="list-group-item list-group-item-action"
+                                    [ngClass]="isDisplay ? '' : 'active'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                      </svg> New task
+                                </a>
+                                <a *ngIf=!isDisplay class="list-group-item flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between pb-2">
+                                        <h5 class="mb-1">Create a new task</h5>
+                                    </div>
+                                    <div>
+                                        <form class="form" [formGroup]="addTaskForm" (ngSubmit)="done()">
+                                            <div>
+                                                <input type="text" id="entersummary" formControlName="t_summary"
+                                                    class="form-control" placeholder="Summary">
+                                                <input type="text" id="summary" formControlName="t_desc"
+                                                    class="form-control" placeholder="Description">
+                                                <input type="number" id="entersummary" formControlName="t_priority"
+                                                    class="form-control" placeholder="Priority(number)">
+                                                <input type="date" id="entersummary" formControlName="t_deadline"
+                                                    class="form-control" placeholder="Deadline">
+                                                <select formControlName="IdCoordinator" class="form-control">
+                                                    <option disabled selected value></option>
+                                                    <option>New</option>
+                                                </select>
+                                                <button class="btn btn-light">Add</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="col-md-9">
+                            <div class="board-wrapper pad-top">
+                                <div class="row row-col justify-content-center">
+                                    <div class="btn-toolbar justify-content-between" role="toolbar">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                          <button (click)="changeIteration(activeIteration-1)" class="btn btn-outline-secondary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                          </svg></button>
+                                        </div>
+                                        <input type="text" readonly value="Iteration: {{activeIteration}}" class="iteration-textbox"  aria-label="" aria-describedby="basic-addon1">
+                                        <div class="input-group-append">
+                                            <button (click)="changeIteration(activeIteration+1)" class="btn btn-outline-secondary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                              </svg></button>
+                                          </div>
+                                          
+                                    </div>
+                                    <div class="btn-group mb-2" ngbDropdown>
+                                        <button class="btn btn-outline-secondary ml-2" ngbDropdownToggle type="button">Choose iteration</button>
+                                        <div class="dropdown-menu" ngbDropdownMenu>
+                                            <button ngbDropdownItem (click)="changeIteration(1)">Iteration 1</button>
+                                            <button ngbDropdownItem (click)="changeIteration(2)">Iteration 2</button>
+                                            <button ngbDropdownItem (click)="changeIteration(3)">Iteration 3</button>
+                                            <button ngbDropdownItem (click)="changeIteration(4)">Iteration 4</button>
+                                            <button ngbDropdownItem (click)="changeIteration(5)">Iteration 5</button>
+                                            <button ngbDropdownItem (click)="changeIteration(6)">Iteration 6</button>
+                                            <button ngbDropdownItem (click)="changeIteration(7)">Iteration 7</button>
+                                            <button ngbDropdownItem (click)="changeIteration(8)">Iteration 8</button>
+                                            <button ngbDropdownItem (click)="changeIteration(9)">Iteration 9</button>
+                                            <button ngbDropdownItem (click)="changeIteration(10)">Iteration 10</button>
+                                            <button ngbDropdownItem (click)="changeIteration(11)">Iteration 11</button>
+                                            <button ngbDropdownItem (click)="changeIteration(12)">Iteration 12</button>
+                                            <button ngbDropdownItem (click)="changeIteration(13)">Iteration 13</button>
+                                            <button ngbDropdownItem (click)="changeIteration(14)">Iteration 14</button>
+                                            <button ngbDropdownItem (click)="changeIteration(15)">Iteration 15</button>
+                                            <button ngbDropdownItem (click)="changeIteration(16)">Iteration 16</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row row-col" cdkDropListGroup>
+                                    <!-- cdkDrop for draging and dropping -->
+                                    <div class="col-md-3 col-col" *ngFor="let column of board.columns">
+                                        <!-- columns generated dynamically -->
+                                        <div class="card card-col">
+                                            <h5 class="card-header">{{column.name}}</h5>
+                                            <div class="card-body card-body-col">
+                                                <!-- insert tasks here ngfor -->
+                                                <div class="card card-body-task" cdkDropList [cdkDropListData]="column.tasks"
+                                                    [cdkDragData]="board.columns"
+                                                    (cdkDropListDropped)="drop($event, board.column)">
+                                                    <div (click)="handleTaskSelect(item)" class="card text-white bg-info mb-3"
+                                                        *ngFor="let item of column.tasks" cdkDrag>
+                                                        <div class="card-body">
+                                                            <div class="d-flex w-100 justify-content-between">
+                                                                <h5 class="mb-1">{{ item.summary }}</h5>
+                                                                <small>{{ item.idTask }}</small>
+                                                              </div>
+                                                            <small>
+                                                                {{ item.description }}
+                                                            </small>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            DL:{{ getdate(item.deadline) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end insert task -->
+                                            </div>
+                                        </div>
+
+                                        <!-- end column -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Ako je ulogirana uprava ili koordinator-->
+    <div class="board" *ngIf=isOwner>
+        <div class="container-fluid">
+            <div class='row'>
+                <div class="col-md-12">
+                    <div class='row'>
+                        <div class="col-md-3 pad-top">
+                            <div class="list-group">
+                                <a  class="list-group-item" (click)="proba()">
+                                <h5 class="mb-0">Select a team</h5>
+                                
+                                </a>
+                                <div *ngFor="let team of teamList">
+                                    <a (click)="changeIteration(6, team.idTeam)"
+                                    class="list-group-item list-group-item-action">{{team.teamName}}</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="board-wrapper pad-top">
+                                <div class="row row-col justify-content-center">
+                                    <div class="btn-toolbar justify-content-between" role="toolbar">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                          <button (click)="changeIteration(activeIteration-1, toggledTeamId)" class="btn btn-outline-secondary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                          </svg></button>
+                                        </div>
+                                        <input type="text" readonly value="Iteration: {{activeIteration}}" class="iteration-textbox"  aria-label="" aria-describedby="basic-addon1">
+                                        <div class="input-group-append">
+                                            <button (click)="changeIteration(activeIteration+1, toggledTeamId)" class="btn btn-outline-secondary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                              </svg></button>
+                                          </div>
+                                          
+                                    </div>
+                                    <div class="btn-group mb-2" ngbDropdown>
+                                        <button class="btn btn-outline-secondary ml-2" ngbDropdownToggle type="button">Choose iteration</button>
+                                        <div class="dropdown-menu" ngbDropdownMenu>
+                                            <button ngbDropdownItem (click)="changeIteration(1, toggledTeamId)">Iteration 1</button>
+                                            <button ngbDropdownItem (click)="changeIteration(2, toggledTeamId)">Iteration 2</button>
+                                            <button ngbDropdownItem (click)="changeIteration(3, toggledTeamId)">Iteration 3</button>
+                                            <button ngbDropdownItem (click)="changeIteration(4, toggledTeamId)">Iteration 4</button>
+                                            <button ngbDropdownItem (click)="changeIteration(5, toggledTeamId)">Iteration 5</button>
+                                            <button ngbDropdownItem (click)="changeIteration(6, toggledTeamId)">Iteration 6</button>
+                                            <button ngbDropdownItem (click)="changeIteration(7, toggledTeamId)">Iteration 7</button>
+                                            <button ngbDropdownItem (click)="changeIteration(8, toggledTeamId)">Iteration 8</button>
+                                            <button ngbDropdownItem (click)="changeIteration(9, toggledTeamId)">Iteration 9</button>
+                                            <button ngbDropdownItem (click)="changeIteration(10, toggledTeamId)">Iteration 10</button>
+                                            <button ngbDropdownItem (click)="changeIteration(11, toggledTeamId)">Iteration 11</button>
+                                            <button ngbDropdownItem (click)="changeIteration(12, toggledTeamId)">Iteration 12</button>
+                                            <button ngbDropdownItem (click)="changeIteration(13, toggledTeamId)">Iteration 13</button>
+                                            <button ngbDropdownItem (click)="changeIteration(14, toggledTeamId)">Iteration 14</button>
+                                            <button ngbDropdownItem (click)="changeIteration(15, toggledTeamId)">Iteration 15</button>
+                                            <button ngbDropdownItem (click)="changeIteration(16, toggledTeamId)">Iteration 16</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class='row row-col'>
+                                    <div class="col-md-3 col-col" *ngFor="let column of board.columns">
+                                        <!-- columns generated dynamically -->
+                                        <div class="card card-col">
+                                            <h5 class="card-header">{{column.name}}</h5>
+                                            <div class="card-body card-body-col">
+                                                <!-- insert tasks here ngfor -->
+                                                <div class="card card-body-task">
+                                                    <div class="card text-white bg-info mb-3"
+                                                        *ngFor="let item of column.tasks">
+                                                        <div class="card-body">
+                                                            <div class="d-flex w-100 justify-content-between">
+                                                                <h5 class="mb-1">{{ item.summary }}</h5>
+                                                                <small>{{ item.idTask }}</small>
+                                                              </div>
+                                                            <small >
+                                                                {{ item.description }}
+                                                            </small>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            DL:{{ getdate(item.deadline) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end insert task -->
+                                            </div>
+                                        </div>
+                                     
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

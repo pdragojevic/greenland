@@ -1,0 +1,11 @@
+
+$theme-colors: (
+  primary: teal
+);
+@import "node_modules/bootstrap/scss/bootstrap";
+
+a {
+    color: black; 
+    text-decoration:none; 
+  }
+  

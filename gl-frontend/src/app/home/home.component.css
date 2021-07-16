@@ -1,0 +1,7 @@
+ul { list-style: none outside none; margin:0; padding: 0; text-align: center; }
+li { float: left; margin: 0 10px; }
+
+.padded {
+    padding-top: 1em;
+    padding-left:1em;
+}

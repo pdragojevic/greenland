@@ -1,0 +1,99 @@
+/*                      This goes in <head> tags in index.html                                               */
+/* <link href="//netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" /> */
+
+a { cursor: pointer }
+
+.bg-img{
+    height: 100vh;
+    width: 100vw;
+    max-width:100%;  /* prevent horizontal scrollbars */
+    background-image: url('src/images/background.jpg');
+    background-size: cover;
+}
+.btn-delete-user {
+    width: 40px;
+    text-align: center;
+    box-sizing: content-box;
+}
+
+.card {
+    width: 390px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 50px;
+    justify-content: center;
+    display: block;
+    margin: auto;
+    text-align: left;
+    position: absolute;
+    top: 15%;
+    left: 37%;
+}
+
+
+
+.mt-5 {
+    justify-content: center;
+}
+
+
+
+
+#card-bodyID {
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+}
+
+#card-bodyID span{
+    color: red;    
+}
+
+.form {
+    background-size: cover;
+    display: block;
+    font-family: Roboto;
+    color: #333333;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.form-control {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin-bottom: 37px;
+    width: 100%;
+}
+
+.btn-login {
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
+#login-btnID:hover {
+    background-color: rgb(23, 144, 138);
+}
+
+#forgotPasswordGoBack:hover {
+    text-decoration: underline;
+}
+
+.btn-forgot:hover {
+    text-decoration: underline;
+}
+
+.btn-forgot {
+    margin-top: 20px;
+    margin-left: -10px;
+}
+
+#enterEmail {
+    margin: 0px;
+}
